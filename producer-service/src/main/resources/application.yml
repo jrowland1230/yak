@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: producer-service
+
+  kafka:
+    producer:
+      # Bootstrap servers
+      bootstrap-servers: PLAINTEXT://localhost:9092
+
+      # Serialization
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+      # Reliability
+      acks: all                             # Wait for all replicas to acknowledge
+      retries: 5                            # Number of retry attempts
+      retry-backoff: 1000ms                 # Delay between retries
+      enable-idempotence: true              # Ensure exactly-once delivery
+
+      # Performance tuning
+      batch-size: 16384                     # Batch size in bytes
+      buffer-memory: 33554432               # Total memory for buffering
+      linger-ms: 10                         # Delay to allow batching
+      compression-type: snappy              # Compress messages
+
+      # Timeout and request control
+      request-timeout-ms: 30000             # Max time to wait for broker response
+      delivery-timeout-ms: 120000           # Total time to deliver a message
+      max-request-size: 1048576             # Max size of a single message
+      connections-max-idle-ms: 540000       # Idle connection timeout
+
+      # Advanced reliability
+      max-in-flight-requests-per-connection: 1  # Prevent out-of-order delivery
+
+      #consumer:
+      #group-id: group_id
+      #auto-offset-reset: earliest
+      #key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  docker compose up -d
+# ./bin/control-center-stop
+#./bin/control-center-start ../etc/confluent-control-center/control-center.properties
+# https://docs.confluent.io/control-center/current/installation/properties.html
+# https://developer.confluent.io/get-started/java/
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: true
+    auth:
+      enabled: true
+server:
+  port: 8092
+logging:
+  level:
+    root: ERROR
+    org:
+      springframework:
+        security:
+          web: ERROR
+        kafka: DEBUG
+      apache:
+        kafka: DEBUG

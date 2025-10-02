@@ -1,0 +1,17 @@
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/ProducerServiceApplication.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/config/KafkaClientConfig.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/config/WebClientConfig.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/controller/HealthController.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/controller/YakController.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/error/ErrorCode.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/error/ErrorResponse.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/exception/MiltonResourceException.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/exception/ServiceErrorHandler.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/gateway/AuthServerGateway.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/gateway/impl/AuthServerGatewayImpl.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/messaging/KafkaProducer.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/messaging/impl/KafkaProducerImpl.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/service/YakService.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/service/impl/YakServiceImpl.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/util/DataUtil.java
+/Users/johnrowland/Documents/GitHub/yak/producer-service/src/main/java/com/milton/producerservice/util/ResourceUtil.java

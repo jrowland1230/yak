@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: consumer-service
+  kafka:
+    consumer:
+      # disable auto commit
+      enable-auto-commit: false
+
+      # Serialization
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      enable:
+        auto:
+          commit: false
+      auto-offset-reset: earliest
+
+      # Bootstrap servers
+      bootstrap-servers: localhost:9092
+      group.id: milton-yak-group
+
+      # properties
+      properties:
+        spring.json.trusted.packages: com.milton.commonservice.model
+        spring.json.value.default.type: com.milton.commonservice.model.YakV1
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+
+    producer:
+      # Bootstrap servers
+      bootstrap-servers: localhost:9092
+      group.id: milton-yak-group-audit
+
+      # Serialization
+#      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+      # Reliability
+      acks: all                             # Wait for all replicas to acknowledge
+      retries: 3                            # Number of retry attempts
+      retry-backoff: 1000ms                 # Delay between retries
+      enable-idempotence: true              # Ensure exactly-once delivery
+
+      # Performance tuning
+      batch-size: 16384                     # Batch size in bytes
+      buffer-memory: 33554432               # Total memory for buffering
+      linger-ms: 10                         # Delay to allow batching
+      compression-type: snappy              # Compress messages
+
+      # Timeout and request control
+      request-timeout-ms: 30000             # Max time to wait for broker response
+      delivery-timeout-ms: 120000           # Total time to deliver a message
+      max-request-size: 1048576             # Max size of a single message
+      connections-max-idle-ms: 540000       # Idle connection timeout
+
+      # Advanced reliability
+      max-in-flight-requests-per-connection: 1  # Prevent out-of-order delivery
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: milton
+      username: user
+      password: root
+
+server:
+  port: 8099
+
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework.kafka: ERROR
+#    org.apache.kafka: ERROR
+#    kafka: ERROR
